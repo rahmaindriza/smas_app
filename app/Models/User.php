@@ -10,27 +10,21 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    /**
-     * Kolom yang dapat diisi secara massal.
-     */
+
     protected $fillable = [
         'name',
         'email',
         'password',
-        'level', // Pastikan kolom ini ada di database
+        'level',
     ];
 
-    /**
-     * Kolom yang disembunyikan saat serialisasi.
-     */
+
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * Casting tipe data.
-     */
+
     protected function casts(): array
     {
         return [

@@ -10,9 +10,7 @@ use Illuminate\Validation\Rule;
 
 class ItemController extends Controller
 {
-    /**
-     * Menampilkan daftar semua item (Index)
-     */
+
     public function index()
     {
         $items = Item::with('category')->latest()->get();
@@ -50,9 +48,7 @@ class ItemController extends Controller
         return redirect()->route('items.index')->with('success', 'Barang berhasil ditambahkan!');
     }
 
-    /**
-     * form edit
-     */
+
     public function edit(Item $item)
     {
         $categories = Category::all();
@@ -62,7 +58,7 @@ class ItemController extends Controller
 
     public function update(Request $request, Item $item)
     {
-        // 1. Validasi inputan
+
         $request->validate([
             'name_item'   => 'required|string|max:255',
             'category_id' => 'required|exists:categories,id',
@@ -91,7 +87,6 @@ class ItemController extends Controller
             'description'
         ]);
 
-        // 3. Logika Manajemen File (Storage)
         if ($request->hasFile('image')) {
             if ($item->image) {
                 Storage::disk('public')->delete($item->image);
@@ -104,12 +99,10 @@ class ItemController extends Controller
         return redirect()->route('items.index')->with('success', 'Barang ' . $item->name_item . ' berhasil diperbarui!');
     }
 
-    /**
-     * Menghapus item dengan soft delete
-     */
+
     public function destroy(Item $item)
     {
-        // Soft delete item
+       
         $item->delete();
 
         return redirect()->route('items.index')->with('success', 'Barang ' . $item->name_item . ' berhasil dihapus (soft delete)!');

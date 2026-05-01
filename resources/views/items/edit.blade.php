@@ -34,7 +34,7 @@
                             @enderror
                         </div>
 
-                        <!-- Kategori -->
+
                         <div>
                             <label for="category_id" class="block text-sm font-medium text-gray-700">Kategori</label>
                             <select name="category_id" id="category_id" class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
@@ -49,7 +49,6 @@
                             @enderror
                         </div>
 
-                        <!-- Brand -->
                         <div>
                             <label for="brand" class="block text-sm font-medium text-gray-700">Brand / Merk</label>
                             <input type="text" id="brand" name="brand" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" value="{{ old('brand', $item->brand) }}" />
@@ -61,7 +60,7 @@
                             <input type="number" id="stock" name="stock" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" value="{{ old('stock', $item->stock) }}" required />
                         </div>
 
-                        <!-- Unit -->
+
                         <div>
                             <label for="unit" class="block text-sm font-medium text-gray-700">Satuan</label>
                             <input type="text" id="unit" name="unit" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" value="{{ old('unit', $item->unit) }}" placeholder="Contoh: pcs, box, meter, dll" />
@@ -71,13 +70,12 @@
                         </div>
                     </div>
 
-                    <!-- Description -->
+
                     <div class="mt-6">
                         <label for="description" class="block text-sm font-medium text-gray-700">Deskripsi</label>
                         <textarea id="description" name="description" rows="3" class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">{{ old('description', $item->description) }}</textarea>
                     </div>
 
-                    <!-- Image -->
                     <div class="mt-6">
                         <label for="image" class="block text-sm font-medium text-gray-700">Foto Barang (Maks 20MB)</label>
                         @if($item->image)

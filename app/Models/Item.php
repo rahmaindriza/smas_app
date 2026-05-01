@@ -21,9 +21,7 @@ class Item extends Model
         'unit',
         'image'
     ];
-    /**
-     * Relasi: Item ke Category
-     */
+
     protected function fullName(): Attribute
     {
         return Attribute::make(
@@ -36,9 +34,7 @@ class Item extends Model
         );
     }
 
-    /**
-     * 4. Mutator: item_kode otomatis huruf KAPITAL (Poin 4 Tugas 3)
-     */
+    
     protected function itemKode(): Attribute
     {
         return Attribute::make(

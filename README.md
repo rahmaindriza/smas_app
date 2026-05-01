@@ -1,58 +1,170 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Sistem Manajemen Aset Sekolah (SMAS)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Project ini merupakan aplikasi **Sistem Manajemen Aset Sekolah (SMAS)** yang dibuat menggunakan framework **Laravel**. Aplikasi ini digunakan untuk mengelola data aset sekolah seperti laptop, proyektor, dan aset lainnya.
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+# Persyaratan Sistem
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Sebelum menjalankan aplikasi, pastikan perangkat Anda sudah memiliki software berikut:
 
-## Learning Laravel
+- PHP versi 8.1 atau lebih baru
+- Composer
+- Node.js dan npm
+- MySQL / PostgreSQL
+- Git
+- Laragon
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+# Langkah Instalasi Project
 
-## Agentic Development
+Ikuti langkah-langkah berikut untuk menjalankan project di komputer lokal.
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+## 1. Clone Repository
+
+Clone repository GitHub terlebih dahulu:
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone <link-repository-github>
+git clone https://github.com/rahmaindriza/smas_app.git
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Masuk ke folder project:
 
-## Contributing
+```bash
+cd smas-app
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
+## 2. Install Dependency Laravel
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Install seluruh dependency backend Laravel dengan perintah berikut:
 
-## Security Vulnerabilities
+```bash
+composer install
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+## 3. Install Dependency Frontend
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Install dependency frontend yang digunakan oleh Vite:
+
+```bash
+npm install
+```
+
+
+## 4. Membuat File Environment
+
+Salin file `.env.example` menjadi `.env`.
+
+### Windows
+
+```bash
+copy .env.example .env
+```
+
+### Linux / Mac / Git Bash
+
+```bash
+cp .env.example .env
+```
+
+
+## 5. Generate APP_KEY
+
+Jalankan perintah berikut untuk membuat application key Laravel:
+
+```bash
+php artisan key:generate
+```
+
+
+## 6. Konfigurasi Database
+
+Buka file `.env`, lalu sesuaikan konfigurasi database dengan database lokal Anda.
+
+Contoh:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=smas_app
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+Pastikan database `smas_app` sudah dibuat terlebih dahulu.
+
+
+## 7. Konfigurasi Mailer untuk resset pw
+```
+
+Rubah pada env bagian mailer dengan env ini
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=465
+MAIL_USERNAME=labpnp8@gmail.com
+MAIL_PASSWORD=pbvxkdohkgrgylgt
+MAIL_ENCRYPTION=ssl
+MAIL_FROM_ADDRESS=labpnp8@gmail.com
+MAIL_FROM_NAME="SMASApp"
+
+```
+## 8. Jalankan Migrasi dan Seeder
+
+Jalankan perintah berikut untuk membuat tabel database dan data awal:
+
+```bash
+php artisan migrate
+php artisan migrate --seed
+```
+
+
+## 9. Membuat Storage Link
+
+Agar gambar aset yang diupload dapat tampil di browser, jalankan:
+
+```bash
+php artisan storage:link
+```
+
+
+# 10. Menjalankan Aplikasi
+
+Buka 2 terminal berbeda untuk menjalankan aplikasi.
+
+## Terminal 1 — Menjalankan Laravel Server
+
+```bash
+npm run dev
+```
+
+Perintah ini digunakan untuk menjalankan asset frontend seperti CSS dan JavaScript.
+
+
+## Terminal 2 — Menjalankan Vite
+
+
+```bash
+php artisan serve
+```
+
+Setelah server berhasil dijalankan, aplikasi dapat diakses melalui browser menggunakan link berikut:
+
+```bash
+http://127.0.0.1:8000/
+```
+
+Salin link tersebut lalu buka di browser seperti Google Chrome, Microsoft Edge, atau Firefox.
+
+
+# 11. Aplikasi Berhasil Dijalankan
+
+Jika semua langkah sudah dilakukan dengan benar, maka aplikasi **Sistem Manajemen Aset Sekolah (SMAS)** sudah siap digunakan melalui browser pada alamat:
+
+```bash
+http://127.0.0.1:8000/
+```

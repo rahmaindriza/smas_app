@@ -11,13 +11,13 @@
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
 
-                {{-- Form Start --}}
+
                 <form action="{{ route('items.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-                        {{-- Nama Barang (name_item) --}}
+
                         <div class="mb-4">
                             <label for="name_item" class="block text-gray-700 font-bold mb-2">Nama Barang</label>
                             <input type="text" name="name_item" id="name_item" value="{{ old('name_item') }}"
@@ -27,7 +27,7 @@
                             @enderror
                         </div>
 
-                        {{-- Kode Barang (item_kode) --}}
+
                         <div class="mb-4">
                             <label for="item_kode" class="block text-gray-700 font-bold mb-2">Kode Barang</label>
                             <input type="text" name="item_kode" id="item_kode" value="{{ old('item_kode') }}"
@@ -37,7 +37,7 @@
                             @enderror
                         </div>
 
-                        {{-- Kategori (category_id) --}}
+
                         <div class="mb-4">
                             <label for="category_id" class="block text-gray-700 font-bold mb-2">Kategori</label>
                             <select name="category_id" id="category_id" class="w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
@@ -53,7 +53,7 @@
                             @enderror
                         </div>
 
-                        {{-- Brand --}}
+
                         <div class="mb-4">
                             <label for="brand" class="block text-gray-700 font-bold mb-2">Brand/Merk</label>
                             <input type="text" name="brand" id="brand" value="{{ old('brand') }}"
@@ -63,7 +63,7 @@
                             @enderror
                         </div>
 
-                        {{-- Stok --}}
+
                         <div class="mb-4">
                             <label for="stock" class="block text-gray-700 font-bold mb-2">Jumlah Stok</label>
                             <input type="number" name="stock" id="stock" value="{{ old('stock', 0) }}"
@@ -73,7 +73,7 @@
                             @enderror
                         </div>
 
-                        {{-- Unit --}}
+
                         <div class="mb-4">
                             <label for="unit" class="block text-gray-700 font-bold mb-2">Unit Kerja</label>
                             <input type="text" name="unit" id="unit" value="{{ old('unit') }}"
@@ -83,7 +83,7 @@
                             @enderror
                         </div>
 
-                        {{-- Gambar Aset (image) --}}
+
                         <div class="mb-4 md:col-span-2">
                             <label for="image" class="block text-gray-700 font-bold mb-2">Upload Gambar Aset (Max 20MB)</label>
                             <input type="file" name="image" id="image"
@@ -94,7 +94,7 @@
                             @enderror
                         </div>
 
-                        {{-- Deskripsi --}}
+                    
                         <div class="mb-4 md:col-span-2">
                             <label for="description" class="block text-gray-700 font-bold mb-2">Deskripsi Barang</label>
                             <textarea name="description" id="description" rows="3"

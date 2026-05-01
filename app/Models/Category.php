@@ -9,12 +9,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Category extends Model
 {
  use SoftDeletes;
-// Mengizinkan mass-assignment (sesuaikan dengan nama kolom yang kamu buat)
     protected $fillable = ['name'];
 
-    /**
-     * Relasi hasMany: Category ke Item
-     */
+   
     public function items(): HasMany
     {
         return $this->hasMany(Item::class);

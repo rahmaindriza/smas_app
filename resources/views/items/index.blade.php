@@ -64,9 +64,18 @@
                                         <span class="text-gray-600">{{ Str::limit($item->description, 50) ?? '-' }}</span>
                                     </td>
                                     <td class="py-3 px-6 text-center">
-                                        <a href="{{ route('items.edit', $item->id) }}" class="text-indigo-600 hover:text-indigo-900 font-bold underline">
-                                            Edit
-                                        </a>
+                                        <div class="flex items-center justify-center gap-2">
+                                            <a href="{{ route('items.edit', $item->id) }}" class="text-indigo-600 hover:text-indigo-900 font-bold underline">
+                                                Edit
+                                            </a>
+                                            <form action="{{ route('items.destroy', $item->id) }}" method="POST" class="inline" onsubmit="return confirm('Yakin ingin menghapus barang ini?');">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="text-red-600 hover:text-red-900 font-bold underline">
+                                                    Hapus
+                                                </button>
+                                            </form>
+                                        </div>
                                     </td>
                                 </tr>
                             @empty
